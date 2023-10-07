@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action=""><input type="text" placeholder="usuario"></form>
+    <form method="POST" action="">
+
+        {% csrf_token %}
+        {{form}}
+    </form>
 </body>
 </html>

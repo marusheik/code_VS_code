@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import VRegister
 
 urlpatterns = [
-    path('',views.loadRegister, name="Register")
+    path('',VRegister.as_view(), name="Register")
 ]
