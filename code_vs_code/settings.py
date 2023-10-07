@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_code_vs_code',
     'app_autentication',
+    'app_exerciseforum',
 ]
 
 MIDDLEWARE = [
