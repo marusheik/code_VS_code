@@ -6,9 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+<title>
+    {% block title %}
+
+    {% endblock %}
+</title>
 </head>
 <body>
+    <nav>
+        <ul>
+          <li><a href="/">Programing Exercises</a></li>
+          <li><a href="/productos">Discusssions</a></li>
+          <li><a href="/servicios">Login</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+
+    {% endblock %}
    
-    <p>prueba</p>
+
 </body>
 </html>
