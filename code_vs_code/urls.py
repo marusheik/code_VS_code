@@ -21,6 +21,6 @@ from app_code_vs_code.views import loadIndex
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', loadIndex),
-    path('register/', include('app_autentication.urls')),
+    path('index/', loadIndex, name='index'),
+    path('', include('app_autentication.urls')),
 ]
