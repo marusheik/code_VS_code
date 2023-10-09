@@ -17,7 +17,6 @@
         <ul>
           <li><a href="/">Programing Exercises</a></li>
           <li><a href="/productos">Discusssions</a></li>
-          <li><a href="/servicios">Login</a></li>
           <li>
             
                 {% if user.is_authenticated %}
@@ -28,7 +27,7 @@
 
                 {% else%}
 
-                <a href="">Login</a>
+                <a href="{% url 'login' %}">Login</a>
                 <a href="{% url 'Register' %}">Register</a>
 
                 {% endif %}

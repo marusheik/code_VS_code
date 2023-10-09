@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %} Login {% endblock%}
+
+{% block content %}
+
+<form method="post" action="">
+
+        {% csrf_token %}
+
+        {{form}}
+
+        <button type="submit"> Login </button>
+        
+</form>
+
+{% endblock %}
