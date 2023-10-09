@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style3.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stars.css' %}">
 <title>
     {% block title %}
 
@@ -13,11 +14,16 @@
 </title>
 </head>
 <body>
-    <nav>
+    <nav id="nav-bar">
+        <div class="logo">
+            <a href="{% url 'index' %}" title="home">
+                <img class="logo" src="{% static 'media/logo/0.png' %}">
+            </a>
+        </div>
         <ul>
-          <li><a href="/">Programing Exercises</a></li>
-          <li><a href="/productos">Discusssions</a></li>
-          <li>
+          <li class="links"><a href="/">Programing Exercises</a></li>
+          <li class="links"><a href="/productos">Discusssions</a></li>
+          <li class="links">
             
                 {% if user.is_authenticated %}
                     <p>
