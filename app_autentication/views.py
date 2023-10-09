@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib import messages
 
 from django.urls import reverse 
 
 from django.contrib.auth.forms import UserCreationForm
 
-
+def vLog_Out(request):
+        logout(request)
+        return redirect('index')
 class VRegister(View):
     
     def get(self, request):
@@ -26,11 +28,13 @@ class VRegister(View):
             return redirect(reverse('index'))
         
         else:
-            for msg in form.error_messages:
-                messages.error(request, form.error_messages[msg])
+            pass
+            # for msg in form.error_messages:
+            #     messages.error(request, form.error_messages[msg])
                 
-            return render( request, "register/register.html", {"form":form} )
-        
+            # return render( request, "register/register.html", {"form":form} )
+ 
+
 
 # Create your views here.
 # def loadRegister(request):
