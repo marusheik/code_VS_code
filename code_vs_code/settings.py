@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,26 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'code_vs_code.urls'
 SITE_ID = 1
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS':{
+            'access_type':'online'
+        },
+        # 'OAUTH_PKCE_ENABLED': True,
+        # 'APP': {
+        #     'client_id': '1036565239981-aa5pbnoun49mpg9je71rm5pm72ag5crf.apps.googleusercontent.com',
+        #     'secret': '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',
+        # }
+        
+    }
+}
+
 
 TEMPLATES = [
     {
@@ -154,6 +175,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+LOGIN_REDIRECT_URL = 'index'
+ACCOUNT_LOGOUT_REDIRECT = 'index'
+ACCOUNT_EMAIL_VERIFICATION_SENT_URL = 'index'
 
 # ISMAEL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

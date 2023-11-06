@@ -12,7 +12,12 @@ urlpatterns = [
     path('logout/', VLog_Out, name='logout'),
     path('', loadIndex, name='index'),
     # path('accounts/register/',VRegister.as_view(), name="Register"),
-    # path('accounts/login/',VLogin, name="login"),
+    # path('login/',VLogin, name="login"),
     # path('logout',VLog_Out, name="logout"),
     
 ]
+
+# # Agrega las URL de autenticación social de Google
+# urlpatterns += [
+#     path('accounts/', include('allauth.socialaccount.urls')),
+# ]
