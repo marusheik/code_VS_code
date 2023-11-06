@@ -59,7 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'code_vs_code.urls'
-# SITE_ID = 1
+SITE_ID = 1
 
 TEMPLATES = [
     {
@@ -153,6 +153,43 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+# ISMAEL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'marusheik.24@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'marusheik.24@gmail.com'
+EMAIL_HOST_PASSWORD = 'wcviwjbctdsfwtwx'
+# wcvi wjbc tdsf wtwx
+
+
+# FRAN
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gyleven.com'
+# EMAIL_HOST_USER = 'mmuncharaz@gyleven.com'
+# EMAIL_HOST_PASSWORD = 'FB}Ebx6)HBYs/L'
+# EMAIL_PORT = 587
+# DEFAULT_FROM_EMAIL = 'mmuncharaz@gyleven.com'
+# EMAIL_ADMIN = "mmuncharaz@gyleven.com"
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# YO
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'smtp.office365.com'
+# EMAIL_FROM = 'code_vs_code_principal@hotmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'code_vs_code_principal@hotmail.com'
+# EMAIL_HOST_PASSWORD = 'iwxlxpoubsnfnbyv'
+
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_EMAIL_CONFIRMATION_SIGNUP_MESSAGE = 'confirmation_message.html'
 
 # ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 
@@ -162,3 +199,4 @@ ACCOUNT_EMAIL_REQUIRED = True
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = "marusheik@gmail.com"
 # EMAIL_HOST_PASSWORD = "pbkdf2_sha256$600000$MPZSjwqAeagVApvTBFhscY$GhPKfwwgApAEqMhg3GE5EmOspN2pIcgAjsBUJ1FqLfs="
+# codevscode123.
