@@ -38,13 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'app_code_vs_code',
     'app_autentication',
     'app_exerciseforum',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'code_vs_code.urls'
+# SITE_ID = 1
 
 TEMPLATES = [
     {
@@ -74,6 +75,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'code_vs_code.wsgi.application'
@@ -146,7 +152,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+
 # ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
