@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth import login, logout, authenticate
+from django import forms
 from django.contrib import messages
-
 from django.urls import reverse 
-
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 def VLogin(request):
@@ -36,11 +36,11 @@ def VLog_Out(request):
 class VRegister(View):
     
     def get(self, request):
-        form = UserCreationForm()
+        form = Custom_User_Creation_Form()
         return render( request, "register/register.html", {"form":form} )
     
     def post(self, request):
-        form = UserCreationForm(request.POST)
+        form = Custom_User_Creation_Form(request.POST)
         
         if form.is_valid():
             
@@ -52,13 +52,11 @@ class VRegister(View):
         
         else:
             pass
-            # for msg in form.error_messages:
-            #     messages.error(request, form.error_messages[msg])
-                
-            # return render( request, "register/register.html", {"form":form} )
- 
 
 
-# Create your views here.
-# def loadRegister(request):
-#     return render(request,'register/register.html')
+class Custom_User_Creation_Form(UserCreationForm):
+    email = forms.EmailField(required=True,help_text="Introduce cuenta de correo electronico")
+    
+    class Meta:
+        model = User
+        fields = ("username","email", "password1", "password2")
