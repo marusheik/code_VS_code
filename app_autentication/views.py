@@ -58,6 +58,7 @@ def VLog_Out(request):
         return redirect('index')
     
 class VRegister(View):
+
     
     def get(self, request):
         form = Custom_User_Creation_Form()

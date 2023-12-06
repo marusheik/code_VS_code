@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from app_code_vs_code.views import loadIndex
+from app_console.views import loadConsole
 # from app_autentication.views import loadRegister
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('index/', loadIndex, name='index'),
     path('', include('app_autentication.urls')),
     path('accounts/', include('allauth.urls')),
+    path('console/', loadConsole, name='console'),
 ]

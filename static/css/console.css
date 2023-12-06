@@ -1,0 +1,9 @@
+#editor { 
+    position: absolute;
+    margin-bottom: 50px;
+    height: 300px;
+    width: 600px;
+}
+.boton-container{
+    margin-top: 400px;
+}

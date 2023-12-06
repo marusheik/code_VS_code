@@ -181,25 +181,25 @@ ACCOUNT_LOGOUT_REDIRECT = 'index'
 ACCOUNT_EMAIL_VERIFICATION_SENT_URL = 'index'
 
 # ISMAEL
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_FROM = 'marusheik.24@gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'marusheik.24@gmail.com'
-EMAIL_HOST_PASSWORD = 'wcviwjbctdsfwtwx'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_FROM = 'marusheik.24@gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'marusheik.24@gmail.com'
+# EMAIL_HOST_PASSWORD = 'wcviwjbctdsfwtwx'
 # wcvi wjbc tdsf wtwx
 
 
-# FRAN
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gyleven.com'
-# EMAIL_HOST_USER = 'mmuncharaz@gyleven.com'
-# EMAIL_HOST_PASSWORD = 'FB}Ebx6)HBYs/L'
-# EMAIL_PORT = 587
-# DEFAULT_FROM_EMAIL = 'mmuncharaz@gyleven.com'
-# EMAIL_ADMIN = "mmuncharaz@gyleven.com"
+# FRAN dondominio
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.panel247.com'
+EMAIL_HOST_USER = 'mmuncharaz@gyleven.com'
+EMAIL_HOST_PASSWORD = 'FB}Ebx6)HBYs/L'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'mmuncharaz@gyleven.com'
+EMAIL_ADMIN = "mmuncharaz@gyleven.com"
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% block title %} code VS code {% endblock %}
+
+{% block content %}
+
+<py-config>
+    plugins = [
+      "https://pyscript.net/latest/plugins/python/py_tutor.py",
+      "./py_list.py"
+    ]
+ 
+</py-config> 
+
+<py-script>
+
+    {% comment %} import js {% endcomment %}
+
+    {% comment %} llamada_a_funcion = js.mostrar() {% endcomment %}
+    
+    {% comment %} print(llamada_a_funcion)
+    print("wee") {% endcomment %}
+    import sys
+    import io
+    from pyscript import display
+    from js import document 
+    from pyodide.ffi.wrappers import add_event_listener
+
+    from pyweb import pydom
+
+
+
+    def myFunction(evt):
+
+        stdout_original = sys.stdout
+        sys.stdout = io.StringIO()
+
+        info = document.querySelector("#editor")
+        contenido_innerText = info.innerText
+        contenido_string = str(contenido_innerText)
+        
+        {% comment %} print(info.innerText) {% endcomment %}
+        {% comment %} print(contenido_string) {% endcomment %}
+        try:
+            exec(contenido_string)
+            contenido_string_version2 = sys.stdout.getvalue()
+            {% comment %} resultado = exec(contenido_string)
+            resultado_string = str(resultado) {% endcomment %}
+            {% comment %} display(resultado_string) {% endcomment %}
+            new_div = pydom.create("div")
+            new_p = new_div.create("p", classes=["code-description"], html=contenido_string_version2)
+            pydom['#element-creation-example'][0].append(new_div)
+        except Exception as e:
+            print(f"Error al ejecutar el código: {e}")
+
+    add_event_listener(
+        document.getElementById("new-task-btn"),
+        "click",
+        myFunction
+    )
+    {% comment %} guardarlo en un fichero aparte y ejecutar este {% endcomment %}
+
+
+
+</py-script>
+
+<script type="text/javascript">
+    let boton = document.getElementById("new-task-btn");
+    boton.addEventListener(mostrar);
+
+    function mostrar(){
+        var code = editor.getValue();
+        return code;
+
+    };
+
+</script> 
+
+
+
+
+{% comment %} <section class="wrapper">
+
+    <script type="py" terminal>
+        print("hello world")
+
+    
+    </script> {% endcomment %}
+
+
+    {% comment %} <script type="py" terminal>print("hello world")</script> {% endcomment %}
+    <p id="prueba">pruebaaaaa</p>
+
+    <h3 class="question">Escribe tu codigo</h3>
+    <!-- // .editor-container -->
+    <div class="editor-container">
+        <!-- // div#editor -->
+        <div id="editor"></div>
+        <div id="editor-lectura"></div>
+    </div>
+    <div class="boton-container">
+        {% comment %} <button id="grabar">grabar</button> {% endcomment %}
+        <button id="new-task-btn" class="py-button">grabar</button>
+    </div>
+
+    <div id="element-creation-example">
+       
+    </div>
+    
+
+    
+
+     
+
+    
+
+    
+</section>
+
+<script src="../static/js/main.js"></script>
+{% endblock %}
