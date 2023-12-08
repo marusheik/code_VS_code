@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %} code VS code {% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+
+<form method="get" action="">
+    <label for="language">Filtrar por lenguaje:</label>
+    <select name="language" id="language">
+        <option value="" {% if not language_filter %}selected{% endif %}>Todos</option>
+        <option value="Python" {% if language_filter == 'Python' %}selected{% endif %}>Python</option>
+        <option value="JavaScript" {% if language_filter == 'JavaScript' %}selected{% endif %}>JavaScript</option>
+    </select>
+    <button type="submit">Filtrar</button>
+</form>
+
+
+
+        {% for exercise in exercises %}
+            <div>
+                {% if exercise.language == 'Python' %}
+                    <img src="{% static 'media/python.png' %}" alt="Python Logo">
+                {% elif exercise.language == 'JavaScript' %}
+                    <img src="{% static 'media/javascript.png' %}" alt="JavaScript Logo">
+                {% endif %}
+            
+                <h2>{{ exercise.get_language_display }}</h2>
+                <p>{{ exercise.statement }}</p>
+            </div>
+        {% endfor %}
+
+{% endblock %}

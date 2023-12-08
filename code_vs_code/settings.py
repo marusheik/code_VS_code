@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'app_code_vs_code',
     'app_autentication',
     'app_exerciseforum',
+    'app_exercises',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
