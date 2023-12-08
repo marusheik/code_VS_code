@@ -26,6 +26,6 @@ urlpatterns = [
     path('index/', loadIndex, name='index'),
     path('', include('app_autentication.urls')),
     path('accounts/', include('allauth.urls')),
-    path('console/', loadConsole, name='console'),
+    path('console/<int:exercise_id>', loadConsole, name='console'),
     path('exercises/', exercise_list, name='exercises'),
 ]

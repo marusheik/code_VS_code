@@ -28,6 +28,12 @@
             
                 <h2>{{ exercise.get_language_display }}</h2>
                 <p>{{ exercise.statement }}</p>
+
+                <form method="POST" action="{% url 'console' exercise.id %}">
+                    {% csrf_token %}
+                    <button name="resolve" type="submit">Resolve</button>
+                </form>
+
             </div>
         {% endfor %}
 
