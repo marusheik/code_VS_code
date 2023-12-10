@@ -27,6 +27,13 @@
 
     from pyweb import pydom
 
+    {% comment %} def sendParams(evt, exercise_id):
+        stdout_original = sys.stdout
+        sys.stdout = io.StringIO()
+
+        info = document.querySelector("#editor")
+        contenido_innerText = info.innerText
+        contenido_string = str(contenido_innerText) {% endcomment %}
 
 
     def myFunction(evt):
@@ -44,7 +51,7 @@
             exec(contenido_string)
             contenido_string_version2 = sys.stdout.getvalue()
             {% comment %} resultado = exec(contenido_string)
-            resultado_string = str(resultado) {% endcomment %}
+            resultado_string = str(resultado)  {% endcomment %}
             {% comment %} display(resultado_string) {% endcomment %}
             new_div = pydom.create("div")
             new_p = new_div.create("p", classes=["code-description"], html=contenido_string_version2)
@@ -57,23 +64,19 @@
         "click",
         myFunction
     )
+
+    {% comment %} add_event_listener(
+        document.getElementById("new-post-btn"),
+        "click",
+        sendParams
+    ) {% endcomment %}
     {% comment %} guardarlo en un fichero aparte y ejecutar este {% endcomment %}
 
 
 
 </py-script>
 
-<script type="text/javascript">
-    let boton = document.getElementById("new-task-btn");
-    boton.addEventListener(mostrar);
 
-    function mostrar(){
-        var code = editor.getValue();
-        return code;
-
-    };
-
-</script> 
 
 
 
@@ -86,7 +89,8 @@
     
     </script> {% endcomment %}
 
-
+<form method="post" action="{% url 'save_solution' exercise.id %}">
+    {% csrf_token %}
     {% comment %} <script type="py" terminal>print("hello world")</script> {% endcomment %}
     <p id="prueba">pruebaaaaa</p>
 
@@ -101,23 +105,50 @@
         <div id="editor-lectura"></div>
     </div>
     <div class="boton-container">
-        {% comment %} <button id="grabar">grabar</button> {% endcomment %}
-        <button id="new-task-btn" class="py-button">grabar</button>
+        {% comment %} <button id="grabar">grabar</button>
+         {% endcomment %}
+        <input type="hidden" name="code" id="hidden-code-input">
+        <button type="submit" id="new-post-btn" class="py-button">Post</button>
     </div>
 
     <div id="element-creation-example">
        
     </div>
-    
 
-    
-
-     
-
-    
-
-    
+</form>
+<button id="new-task-btn" class="py-button">run</button>
+       
 </section>
+
+<script type="text/javascript">
+
+    
+
+    console.log("Script ejecutándose");
+
+    let boton = document.getElementById("new-task-btn");
+    {% comment %} boton.addEventListener(mostrar); {% endcomment %}
+
+    let postBtn = document.getElementById("new-post-btn");
+    
+    postBtn.addEventListener('click', function() {
+
+        //var code = document.getElementById("editor").innerText;
+        //var code = document.querySelector(".ace_text-input").value;
+        //var code = document.querySelector("#editor");
+        
+        var code = editor.getValue();
+        console.log("el codigo es", code)
+        document.getElementById("hidden-code-input").value = code;
+    });
+
+    function mostrar(){
+        var code = editor.getValue();
+        return code;
+
+    };
+
+</script> 
 
 <script src="../static/js/main.js"></script>
 {% endblock %}

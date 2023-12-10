@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %} code VS code {% endblock %}
+
+{% block content %}
+<h1>soluciones</h1>
+{% for solution in solutions %}
+    <div>
+        <p>Usuario: {{ solution.user.username }}</p>
+        <p>Hora: {{ solution.created_at}}</p>
+        <p>Lenguaje: {{ solution.exercise.get_language_display }}</p>
+        <p>Solución: {{ solution.code }}</p>
+    </div>
+{% endfor %}
+{% endblock %}
