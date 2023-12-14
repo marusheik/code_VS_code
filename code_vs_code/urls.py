@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from app_code_vs_code.views import loadIndex
+from app_code_vs_code.views import loadIndex, loadDashboard
 from app_console.views import loadConsole
 from app_exercises.views import exercise_list, save_solution, show_solutions
 # from app_autentication.views import loadRegister
@@ -31,4 +31,5 @@ urlpatterns = [
     path('exercises/', exercise_list, name='exercises'),
     path('save_solution/<int:exercise_id>/', save_solution, name='save_solution'),
     path('show_solutions/', show_solutions, name='show_solutions'),
+    path('dashboard/', loadDashboard, name='dashboard'),
 ]

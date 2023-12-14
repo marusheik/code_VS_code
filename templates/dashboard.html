@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container-wrapper">
+        <div class="container-nav">
+            <div class="container">
+                <a>
+                    <img id="logo" src="{% static 'media/logo2.png' %}">
+                </a>
+                <div class="container-nav-main-elements">
+                    <div class="nav-element">
+                        <img class="icon" src="{% static 'media/profile.png' %}">
+                        <a>Profile</a>
+                    </div>
+                    <div class="nav-element">
+                        <img class="icon" src="{% static 'media/news.png' %}">
+                        <a>News</a>
+                    </div>
+                    <div class="nav-element">
+                        <img class="icon" src="{% static 'media/exercises.png' %}">
+                        <a>Exercises</a>
+                    </div>
+                    <div class="nav-element">
+                        <img class="icon" src="{% static 'media/settings.png' %}">
+                        <a>Settings</a>
+                    </div>
+                </div>
+                <div class="container-nav-logout nav-element">
+                    <img class="icon" src="{% static 'media/logout.png' %}">
+                    <a href="{% url 'logout' %}">Log Out</a>
+                </div>
+            </div>
+        </div>
+        <!-- aaqui acaba -->
+
+
+
+<div class="container2">
+    <div class="container-dashboard">
+        <p><strong>Welcome,</strong> {{ user.username}}</p>
+            <div class="dashboard-search">
+                <input type="text" id="search-bar" placeholder="Search...">
+                <img class="icon-pink" src="{% static 'media/notification.png' %}">
+            </div>
+    </div>
+    <div class="container-news">
+        <h2>New upcoming Challenges</h2>
+        <p>Exciting news on Latest Updates</p>
+        <button>Learn More</button>
+
+    </div>
+
+    <div class="container-dashend">
+        <div class="container-dashend2 scrollable">
+            <p id="text">Recommended today</p>
+            <div class="container-dashend-child ">
+                <img class="icon" src="{% static 'media/python.png' %}">
+                <p>Write a Python program that accepts a sequence of comma separated 4 digit binary numbers as its input. The program will print the numbers that are divisible by 5 in a comma separated sequence.</p>
+            </div>
+            <div class="container-dashend-child">
+                <img class="icon" src="{% static 'media/js.png' %}">
+                <p>Write a JavaScript program that accepts a sequence of comma separated 4 digit binary numbers as its input. The program will print the numbers that are divisible by 5 in a comma separated sequence.</p>
+            </div>
+            <div class="container-dashend-child">
+                <img class="icon" src="{% static 'media/js.png' %}">
+                <p>Write a JavaScript program that accepts a sequence of comma separated 4 digit binary numbers as its input. The program will print the numbers that are divisible by 5 in a comma separated sequence.</p>
+            </div>
+        </div>
+
+        <div >
+            <div class="container-dashend3">
+                <div id="sos-father">
+                    <div class="sos">
+                        <img class="icon" src="{% static 'media/stadistics.png' %}">
+                        <p>Solved Exercises</p>
+                        
+                    </div>
+                    <div id="stadistic">
+                        <p>+10</p>
+                    </div>
+                </div>
+
+                <div >
+                    <img class="cat" src="{% static 'media/cat-fly2.png' %}">
+                    
+                </div>
+            </div>
+
+            <div class="container-dashend-comments">
+                <div class="comment">
+                    <div class="user-comment-data">
+                        <p>Fueguito</p>
+                        <p>14/12/2023</p>
+                    </div>
+                    <div class="container-dashend-child ">
+                        <img class="user" src="{% static 'media/user1.jpg' %}">
+                        <p>const myFunc = ({ x, y, z }) => { console.log(x, y, z); };
+                            worked for me, idk</p>
+                    </div>
+                </div>
+             
+                
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
