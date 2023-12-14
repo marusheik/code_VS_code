@@ -4,11 +4,66 @@
 {% block content %}
 <h1>soluciones</h1>
 {% for solution in solutions %}
-    <div>
+    <div style="border: 1px solid #000;">
         <p>Usuario: {{ solution.user.username }}</p>
         <p>Hora: {{ solution.created_at}}</p>
         <p>Lenguaje: {{ solution.exercise.get_language_display }}</p>
         <p>Solución: {{ solution.code }}</p>
+
+        <h2 id="comentarios-link" class="toggle-link">Comentarios</h2>
+            <div id="comentarios-container" class="hidden">
+
+                <form id="comment-form" method="post" action="#">
+                    {% comment %} <form id="comment-form" method="post" action="{% url 'post_comment' %}"> {% endcomment %}
+                    {% csrf_token %}
+                    <textarea name="comment_text" rows="4" cols="50"></textarea>
+                    <button type="submit">Publicar comentario</button>
+                </form>
+                
+                {% for comment in comments %}
+                    <div>
+                        <p>Usuario: {{ comment.user.username }}</p>
+                        <p>Hora: {{ comment.created_at }}</p>
+                        <p>{{ comment.text }}</p>
+                        
+                        <form id="like-form" method="post" action="#">
+                            {% comment %} <form id="like-form" method="post" action="{% url 'like_comment' comment_id=comment.id %}"> {% endcomment %}
+                            {% csrf_token %}
+                            <button type="submit">Like</button>
+                        </form>
+
+                    </div>
+                {% endfor %}
+            </div>
+            
+
+        <form id="like-form3" method="post" action="#">
+            {% comment %} <form id="like-form3" method="post" action="{% url 'like_solution' solution_id=solution.id %}"> {% endcomment %}
+            {% csrf_token %}
+            <button type="submit">Like</button>
+        </form>
+        
     </div>
 {% endfor %}
+
+    <style>
+        .hidden {
+            display: none;
+        }
+        
+        
+        .toggle-link {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        document.getElementById('comentarios-link').addEventListener('click', function() {
+            var comentariosContainer = document.getElementById('comentarios-container');
+            comentariosContainer.classList.toggle('hidden');
+        });
+    </script>
+
 {% endblock %}

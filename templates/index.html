@@ -1,16 +1,59 @@
-{% extends "layout.html" %}
-{% block title %} code VS code {% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body class="background-index">
+    <nav id="nav">
+            <a href="{% url 'index' %}"> 
+                <img id="logo" src="{% static 'media/logo.png' %}">
+            </a>
+        <ul>
+          <li class="links"><a href="#">About</a></li>
+          <li class="links"><a href="#">Community</a></li>
+          <li class="links"><a href="#">Challenges</a></li>
+          <li class="links"><a href="#">New</a></li>
+        </ul>
+        <a href="{% url 'login' %}" class="pink-btn">Login</a>
+    </nav>
 
-{% block content %}
-<section class="wrapper">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
-    <div id="title">
-        <h1 data-end="&gt">&lt;CODE VS CODE</h1>
-        <br>
-        <h2>Code and connect, learn and level up together.</h2>
-        <button>start</button>
+    <div id="container-index-main">
+        <div>
+            <h1 id="title-index-main">Decode challenges,<br>Encode Success</h1>
+
+            <p>Join our community and engage in friendly competition with <br> your peers to determine who's the most noob</p>
+            
+            <div class="container-start-btn">
+                <img id="icon-btn" src="{% static 'media/arrow.png' %}">
+                <a id="start-btn" >START</a>
+            </div>
+        </div>
+        <div id="container-index-main-socials">
+            <a>
+                <img class="socials" src="{% static 'media/discord.png' %}">
+            </a>
+            <a>
+                <img class="socials" src="{% static 'media/twitch.png' %}">
+            </a>
+            <a>
+                <img class="socials" src="{% static 'media/twitter.png' %}">
+            </a>
+        </div>
+        
     </div>
-</section>
-{% endblock %}
+
+    <div id="container-index-footer">
+        <ul>
+            <li class="links"><a href="#">Cookies Policy</a></li>
+            <li class="links"><a href="#">Privacy Policy</a></li>
+            <li class="links"><a href="#">Copyright 2023</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>
