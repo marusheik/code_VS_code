@@ -98,7 +98,7 @@ TEMPLATES = [
         },
     },
 ]
-
+# aqui lo tenia con [ ]
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -175,12 +175,13 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-# mandatory
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# mandatory 
+SOCIALACCOUNT_AUTO_SIGNUP = True
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'dashboard'
 ACCOUNT_LOGOUT_REDIRECT = 'index'
-ACCOUNT_EMAIL_VERIFICATION_SENT_URL = 'index'
+ACCOUNT_EMAIL_VERIFICATION_SENT_URL = 'dashboard'
 
 # ISMAEL
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

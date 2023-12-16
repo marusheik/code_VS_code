@@ -1,12 +1,12 @@
 
 let editor = ace.edit("editor", {
-    theme: 'ace/theme/twilight',
+    theme: 'ace/theme/tomorrow_night',
     mode: "ace/mode/javascript",
     selectionStyle: "text"
 });
 
 let readOnly = ace.edit("editor-lectura", {
-    theme: 'ace/theme/twilight',
+    theme: 'ace/theme/xcode',
     mode: "ace/mode/javascript",
     selectionStyle: "text"
 });

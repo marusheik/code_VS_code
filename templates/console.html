@@ -1,7 +1,18 @@
-{% extends "layout.html" %}
-{% block title %} code VS code {% endblock %}
-
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/console.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.23.4/ace.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
+</head>
+<body class="background-index">
 
 <py-config>
     plugins = [
@@ -44,6 +55,8 @@
         info = document.querySelector("#editor")
         contenido_innerText = info.innerText
         contenido_string = str(contenido_innerText)
+
+        
         
         {% comment %} print(info.innerText) {% endcomment %}
         {% comment %} print(contenido_string) {% endcomment %}
@@ -53,6 +66,7 @@
             {% comment %} resultado = exec(contenido_string)
             resultado_string = str(resultado)  {% endcomment %}
             {% comment %} display(resultado_string) {% endcomment %}
+            pydom['#element-creation-example'].html=" "
             new_div = pydom.create("div")
             new_p = new_div.create("p", classes=["code-description"], html=contenido_string_version2)
             pydom['#element-creation-example'][0].append(new_div)
@@ -88,37 +102,96 @@
 
     
     </script> {% endcomment %}
-
-<form method="post" action="{% url 'save_solution' exercise.id %}">
-    {% csrf_token %}
-    {% comment %} <script type="py" terminal>print("hello world")</script> {% endcomment %}
-    <p id="prueba">pruebaaaaa</p>
-
-    <h2>{{ exercise.get_language_display }}</h2>
-    <p>{{ exercise.statement }}</p>
-
-    <h3 class="question">Escribe tu codigo</h3>
-    <!-- // .editor-container -->
-    <div class="editor-container">
-        <!-- // div#editor -->
-        <div id="editor"></div>
-        <div id="editor-lectura"></div>
+<div class="container-wrapper">
+    <div class="container-nav">
+        <div class="container">
+            <a>
+                <img id="logo" src="{% static 'media/logo2.png' %}">
+            </a>
+            <div class="container-nav-main-elements">
+                <div class="nav-element">
+                    <img class="icon" src="{% static 'media/profile.png' %}">
+                    <a>Profile</a>
+                </div>
+                <div class="nav-element">
+                    <img class="icon" src="{% static 'media/news.png' %}">
+                    <a>News</a>
+                </div>
+                <div class="nav-element">
+                    <img class="icon" src="{% static 'media/exercises.png' %}">
+                    <a>Exercises</a>
+                </div>
+                <div class="nav-element">
+                    <img class="icon" src="{% static 'media/settings.png' %}">
+                    <a>Settings</a>
+                </div>
+            </div>
+            <div class="container-nav-logout nav-element">
+                <img class="icon" src="{% static 'media/logout.png' %}">
+                <a href="{% url 'logout' %}">Log Out</a>
+            </div>
+        </div>
     </div>
-    <div class="boton-container">
-        {% comment %} <button id="grabar">grabar</button>
-         {% endcomment %}
-        <input type="hidden" name="code" id="hidden-code-input">
-        <button type="submit" id="new-post-btn" class="py-button">Post</button>
-    </div>
 
+
+
+{% comment %} acaba el nav {% endcomment %}
+    <div class="wrapper1">
+        <div class="container-dashend-child ">
+            {% if exercise.get_language_display == 'Python' %}
+                <img class="icon" src="{% static 'media/python.png' %}">
+            {% elif exercise.get_language_display == 'Javascript' %}
+                <img class="icon" src="{% static 'media/js.png' %}">
+            {% endif %}
+            <p id="statement">{{ exercise.statement }}</p>
+        </div>
+    
+
+    <div class="wrapper2">
+
+    <form method="post" action="{% url 'save_solution' exercise.id %}">
+        {% csrf_token %}
+        {% comment %} <script type="py" terminal>print("hello world")</script> {% endcomment %}
+        
+    
+
+        <div class="container-workarea">
+            <div class="editor-container">
+                <div id="editor"></div>
+                <div id="editor-lectura"></div>
+            </div>
+
+            {% comment %} <div class="run-container">
+                <input type="hidden" name="code" id="hidden-code-input">
+            </div> {% endcomment %}
+    
+        </div>
+
+        <div class="boton-container">
+            {% comment %} <button id="grabar">grabar</button>
+            {% endcomment %}
+
+            <input type="hidden" name="code" id="hidden-code-input">
+            <button type="submit" id="new-post-btn" class="py-button">Post</button>
+            <button type="button" id="new-task-btn" class="py-button">Run code</button>
+        </div>
+
+        
+    </form>
     <div id="element-creation-example">
-       
+        
     </div>
 
-</form>
-<button id="new-task-btn" class="py-button">run</button>
+    </div>
+
+</div>
+    
+    
+    
+
+    
        
-</section>
+</div>
 
 <script type="text/javascript">
 
@@ -151,4 +224,5 @@
 </script> 
 
 <script src="../static/js/main.js"></script>
-{% endblock %}
+</body>
+</html>

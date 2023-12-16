@@ -19,8 +19,16 @@
           <li class="links"><a href="#">Challenges</a></li>
           <li class="links"><a href="#">New</a></li>
         </ul>
-        <a href="{% url 'login' %}" class="pink-btn">Login</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="pink-btn">Profile</a>
+        {% else%}
+            <a href="{% url 'account_login'  %}" class="pink-btn">Login</a>
+        {% endif %}
     </nav>
+
+
+   
+
 
     <div id="container-index-main">
         <div>
