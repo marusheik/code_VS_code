@@ -32,4 +32,5 @@ urlpatterns = [
     path('save_solution/<int:exercise_id>/', save_solution, name='save_solution'),
     path('show_solutions/', show_solutions, name='show_solutions'),
     path('dashboard/', loadDashboard, name='dashboard'),
+    path('show_solutions<int:exercise_id>/', show_solutions, name='show_solutions'),
 ]

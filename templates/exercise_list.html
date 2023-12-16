@@ -1,40 +1,86 @@
-{% extends "layout.html" %}
-{% block title %} code VS code {% endblock %}
-
-{% block content %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/exercise_list.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <title>Document</title>
+</head>
+<body>
 
-
-
-<form method="get" action="">
-    <label for="language">Filtrar por lenguaje:</label>
-    <select name="language" id="language">
-        <option value="" {% if not language_filter %}selected{% endif %}>Todos</option>
-        <option value="Python" {% if language_filter == 'Python' %}selected{% endif %}>Python</option>
-        <option value="JavaScript" {% if language_filter == 'JavaScript' %}selected{% endif %}>JavaScript</option>
-    </select>
-    <button type="submit">Filtrar</button>
-</form>
-
-
-
-        {% for exercise in exercises %}
-            <div>
-                {% if exercise.language == 'Python' %}
-                    <img src="{% static 'media/python.png' %}" alt="Python Logo">
-                {% elif exercise.language == 'JavaScript' %}
-                    <img src="{% static 'media/javascript.png' %}" alt="JavaScript Logo">
-                {% endif %}
-            
-                <h2>{{ exercise.get_language_display }}</h2>
-                <p>{{ exercise.statement }}</p>
-
-                <form method="POST" action="{% url 'console' exercise.id %}">
-                    {% csrf_token %}
-                    <button name="resolve" type="submit">Resolve</button>
-                </form>
-
+    <div class="container-wrapper">
+        <div class="container-nav">
+            <div class="container">
+                <a>
+                    <img id="logo" src="{% static 'media/logo2.png' %}">
+                </a>
+                <div class="container-nav-main-elements">
+                    <div class="nav-element">
+                        <img class="icon-nav" src="{% static 'media/profile.png' %}">
+                        <a>Profile</a>
+                    </div>
+                    <div class="nav-element">
+                        <img class="icon-nav" src="{% static 'media/news.png' %}">
+                        <a>News</a>
+                    </div>
+                    <div class="nav-element">
+                        <img class="icon-nav" src="{% static 'media/exercises.png' %}">
+                        <a>Exercises</a>
+                    </div>
+                    <div class="nav-element">
+                        <img class="icon-nav" src="{% static 'media/settings.png' %}">
+                        <a>Settings</a>
+                    </div>
+                </div>
+                <div class="container-nav-logout nav-element">
+                    <img class="icon-nav" src="{% static 'media/logout.png' %}">
+                    <a href="{% url 'logout' %}">Log Out</a>
+                </div>
             </div>
-        {% endfor %}
+        </div>
+    
 
-{% endblock %}
+
+    <div>
+    <form method="get" action="">
+        <label for="language">Filtrar por lenguaje:</label>
+        <select name="language" id="language">
+            <option value="" {% if not language_filter %}selected{% endif %}>Todos</option>
+            <option value="Python" {% if language_filter == 'Python' %}selected{% endif %}>Python</option>
+            <option value="JavaScript" {% if language_filter == 'JavaScript' %}selected{% endif %}>JavaScript</option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+    
+            {% for exercise in exercises %}
+            <div class="container-exercise">
+
+                <div class="container-statement">
+                    {% if exercise.language == 'Python' %}
+                        <img class="icon" src="{% static 'media/python.png' %}" alt="Python Logo">
+                    {% elif exercise.language == 'JavaScript' %}
+                        <img class="icon" src="{% static 'media/js.png' %}" alt="JavaScript Logo">
+                    {% endif %}
+                    <div class="container-statement-details">
+                        <h2>{{ exercise.get_language_display }}</h2>
+                        <p>{{ exercise.statement }}</p>
+                    </div>
+                </div>
+
+                <div class="container-button-resolve">
+                    <form method="POST" action="{% url 'console' exercise.id %}">
+                        {% csrf_token %}
+                        <button name="resolve" type="submit">Resolve</button>
+                    </form>
+                </div>
+                
+            </div>
+                
+            {% endfor %}
+        </div>
+    
+</div>
+</body>
+</html>

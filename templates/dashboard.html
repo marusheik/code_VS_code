@@ -42,6 +42,32 @@
         </div>
         <!-- aaqui acaba -->
 
+        {% comment %} {% for exercise in exercises %}
+            <div class="container-exercise">
+
+                <div class="container-statement">
+                    {% if exercise.language == 'Python' %}
+                        <img class="icon" src="{% static 'media/python.png' %}" alt="Python Logo">
+                    {% elif exercise.language == 'JavaScript' %}
+                        <img class="icon" src="{% static 'media/js.png' %}" alt="JavaScript Logo">
+                    {% endif %}
+                    <div class="container-statement-details">
+                        <h2>{{ exercise.get_language_display }}</h2>
+                        <p>{{ exercise.statement }}</p>
+                    </div>
+                </div>
+
+                <div class="container-button-resolve">
+                    <form method="POST" action="{% url 'console' exercise.id %}">
+                        {% csrf_token %}
+                        <button name="resolve" type="submit">Resolve</button>
+                    </form>
+                </div>
+                
+            </div>
+                
+            {% endfor %} {% endcomment %}
+
 
 
 <div class="container2">
@@ -62,18 +88,31 @@
     <div class="container-dashend">
         <div class="container-dashend2 scrollable">
             <p id="text">Recommended today</p>
-            <div class="container-dashend-child ">
-                <img class="icon" src="{% static 'media/python.png' %}">
-                <p>Write a Python program that accepts a sequence of comma separated 4 digit binary numbers as its input. The program will print the numbers that are divisible by 5 in a comma separated sequence.</p>
+            
+            {% for exercise in exercises %}
+            <div class="container-recomended">
+                <div class="container-dashend-child ">
+                    {% if exercise.language == 'Python' %}
+                        <img class="icon" src="{% static 'media/python.png' %}" alt="Python Logo">
+                    {% elif exercise.language == 'JavaScript' %}
+                        <img class="icon" src="{% static 'media/js.png' %}" alt="JavaScript Logo">
+                    {% endif %}
+                    <div class="container-dashend-child2">
+                        <p>{{ exercise.statement }}</p>
+                        <div class="prueba">
+                            <form class="boton" method="POST" action="{% url 'console' exercise.id %}">
+                                {% csrf_token %}
+                                <button name="resolve" type="submit">Resolve</button>
+                            </form>
+                    
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div class="container-dashend-child">
-                <img class="icon" src="{% static 'media/js.png' %}">
-                <p>Write a JavaScript program that accepts a sequence of comma separated 4 digit binary numbers as its input. The program will print the numbers that are divisible by 5 in a comma separated sequence.</p>
-            </div>
-            <div class="container-dashend-child">
-                <img class="icon" src="{% static 'media/js.png' %}">
-                <p>Write a JavaScript program that accepts a sequence of comma separated 4 digit binary numbers as its input. The program will print the numbers that are divisible by 5 in a comma separated sequence.</p>
-            </div>
+
+            {% endfor %} 
+        
         </div>
 
         <div >
@@ -85,7 +124,7 @@
                         
                     </div>
                     <div id="stadistic">
-                        <p>+10</p>
+                        <p>+{{ solved_exercises_count }}</p>
                     </div>
                 </div>
 

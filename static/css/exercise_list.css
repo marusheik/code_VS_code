@@ -1,0 +1,153 @@
+body{
+    background-color: #23242D;
+    font-family:'Poppins', sans-serif;
+    font-size: 20px;
+    color:white;
+    
+    /* overflow: hidden; */
+}
+.container-exercise{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-right: 50px;
+    background-color: #2A2D3A;
+
+
+    border-radius: 35px;
+
+
+    
+}
+
+.container-statement{
+    display: flex;    
+    justify-content: center;
+}
+
+.container-statement-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.icon{
+    margin-top: 50px;
+    width: 68px;
+    height: 68px;
+    margin-right: 30px;
+}
+
+.container-button-resolve{
+    display: flex;
+    justify-content: flex-end;
+}
+
+button{
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 24px;
+    color: white;
+    background-color: #FF76AE;
+    border-radius: 30px;
+    margin-right: 60px;
+    cursor: pointer;
+}
+
+.icon-nav{
+    width: 64px;
+    height: 64px;
+    
+}
+
+.container-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.container-nav {
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #9d9fa6;
+    margin-right: 10px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding-top: 20px;
+}
+
+.container-nav-main-elements{
+    margin-top: 100px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    flex-grow: 1; 
+}
+
+#logo{
+    width: 130px;
+    height: 130px;
+    padding-top: 25px;
+    padding-left: 50px;
+}
+
+.nav-element img{
+    display: flex;
+    margin-right: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.nav-element a{
+    height: 100%;
+}
+
+
+.container-nav-logout{
+    margin-bottom: 30px;
+}
+
+.container-nav img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.container-nav-main-elements {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.nav-element {
+    
+    color: #9d9fa6;
+    padding: 10px;
+    display: flex;
+    align-items: center!important;
+    
+
+}
+
+.nav-element:hover{
+    color: white;
+    background-color: #FF76AE;
+    border-radius: 30px;
+}
+
+.nav-element img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.container-nav-logout {
+    margin-top: auto; /* Empuja el elemento hacia abajo */
+}

@@ -44,7 +44,18 @@ body{
     
 }
 
+.container-recomended{
+    display: flex;
+
+}
+.prueba {
+    display: flex;
+    flex-direction: column;
+
+}
+
 .icon{
+    padding-bottom: 50px;
     width: 64px;
     height: 64px;
     
@@ -251,9 +262,38 @@ a{
     margin-right: 0;
 }
 
-.container-dashend-child{
+.container-dashend-child2{
     border-radius: 45px;
     /* padding: 20px; */
+    margin-top: 0px;
+    background-color: #373A4B!important;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0px;
+    margin-left: 0px;
+    
+    
+    /* align-items: center; */
+
+
+}
+.boton > button{
+    margin-left: 280px;
+    background-color: #FF76AE;
+    color: white;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.container-dashend-child{
+    border-radius: 45px;
+    padding: 20px;
+    padding-bottom: 0px;
     margin-top: 0px;
     background-color: #373A4B!important;
     margin-bottom: 20px;

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Exercise, Solution
+from django.urls import reverse
 
 
 def exercise_list(request):
@@ -30,10 +31,19 @@ def save_solution(request, exercise_id):
         )
 
         # Redirigir a la vista de soluciones después de guardar
-        return redirect('show_solutions')
+        # return redirect('show_solutions')
+        return redirect(reverse('show_solutions') + f'?exercise_id={exercise_id}')
 
-    # Si no es una solicitud POST, redirigir o renderizar según tus necesidades
+    
     # return redirect('alguna_otra_vista')
 def show_solutions(request):
-    solutions = Solution.objects.all()
-    return render(request, 'show_solutions.html', {'solutions': solutions})   
+    exercise_id = request.GET.get('exercise_id')
+
+    if exercise_id:
+        solutions = Solution.objects.filter(exercise__id=exercise_id)
+    else:
+        solutions = Solution.objects.all()
+
+    return render(request, 'show_solutions.html', {'solutions': solutions})
+    # solutions = Solution.objects.all()
+    # return render(request, 'show_solutions.html', {'solutions': solutions})   
